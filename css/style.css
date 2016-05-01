@@ -1,5 +1,17 @@
 
 
+/*div {
+	outline: 1px solid lightgrey;
+}
+
+*/
+
+
+
+
+
+
+
 .chart-elements {
 	text-align: right;
 }
@@ -85,6 +97,27 @@
 }
 
 
+
+
+.text-here {
+	text-align: left;
+	padding-top: 30px;
+}
+
+
+
+
+
+.bootstrap-presentation {
+
+}
+
+.box {
+	height: 100px;
+	outline: 1px solid red;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
 
 
 
