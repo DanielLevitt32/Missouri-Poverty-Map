@@ -11,16 +11,13 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-
 // //Add an svg element to the map.
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
-
 //This will be a dictionary object we use to lookup the info for each county.
 //It's empty for now. We add our data when we load or json.
 var theData = {};
-
 
 // Use Leaflet to implement a D3 geometric transformation.
 function projectPoint(x, y) {
@@ -28,13 +25,11 @@ function projectPoint(x, y) {
     this.stream.point(point.x, point.y);
 }
 
-
 // This is some logic to control whether elements appear in front of or behind other elements.
 // We'll use this on mouseover to move county shapes to the front
 // And then to the back when we mouseout. The effect is to get crisp borders all the way around.
 // See it in action in the county mouseover below. It's called by adding `.moveToFront()` to a selection.
 // I don't know why, but this functionality isn't included in the d3 code base.
-// I almost always include this function with my d3 projects.
 // It's just a piece of code I've copied from the web. Like here, for example:
 
 //http://bl.ocks.org/eesur/4e0a69d57d3bfc8a82c2
@@ -52,29 +47,20 @@ d3.selection.prototype.moveToBack = function() {
     });
 };
 
-
-
-
-
-
 $(document).ready(function(d) {
     
-
     d3.csv("data/mo_poverty.csv", function(data) {
-
 
         // Each row in the data is a county.
         // So we append an object to theData with the county name
         // And put the whole row in that object
         // So each county's data is accessible with the construction, theData[county name here];
-        
 
         // $.each is the same as a for loop:
         // for (i=0; i < data.length; i++) {
             //where item is the same as data[i];
             //and i would be index, just like in a for loop.
         // }
-
 
         $.each(data, function(i, item) {
             var fips = item["State FIPS Code"]+item["County FIPS Code"];
@@ -84,10 +70,6 @@ $(document).ready(function(d) {
         drawMap();
     })
 });
-
-
-
-
 
 function drawMap() {
 
@@ -100,7 +82,6 @@ function drawMap() {
             }),
             path = d3.geo.path().projection(transform);
 
-        
         //This draws the feature on the map and fills it with data
         //The data for each county is what's in the GeoJson.
         //The GeoJson contains county names...
@@ -131,9 +112,7 @@ function drawMap() {
                 return "#fd8d3c";
             } else if (povertyLevel > 30) {
                 return "#e31a1c";
-            }
-
-            
+            }  
         })
         .on("mouseover", function(d) {
             var fips = d.properties.geoid;
@@ -186,10 +165,6 @@ function drawMap() {
             $(".tt").hide();
         })
 
-
-
-
-
         //The next block of code repositions the geojson objects on the map
         //whenever you zoom or pan on the map.
         //You should be able to leave this as is.
@@ -197,10 +172,7 @@ function drawMap() {
             reset();
         });
 
-
         reset();
-
-
 
         // Reposition the SVG to cover the features.
         function reset() {
@@ -217,23 +189,9 @@ function drawMap() {
             g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
 
             feature.attr("d", path);
-
         }
-
-        
     });
-
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

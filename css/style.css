@@ -1,16 +1,8 @@
-
-
 /*div {
 	outline: 1px solid lightgrey;
 }
 
 */
-
-
-
-
-
-
 
 .chart-elements {
 	text-align: right;
@@ -25,7 +17,6 @@
 	stroke: #FFF;
 	fill: #CCC;
 }
-
 
 .tt {
 	background-color: #fff;
@@ -47,9 +38,6 @@
 .tt .val {
 	font-size: 18px;
 }
-
-
-
 
 .key {
 	position: relative;
@@ -96,17 +84,10 @@
 	background-color: #e31a1c;
 }
 
-
-
-
 .text-here {
 	text-align: left;
 	padding-top: 30px;
 }
-
-
-
-
 
 .bootstrap-presentation {
 
@@ -118,12 +99,4 @@
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
-
-
-
-
-
-
-
-
 
